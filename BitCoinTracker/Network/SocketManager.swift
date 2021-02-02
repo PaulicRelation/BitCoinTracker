@@ -9,18 +9,17 @@ import Foundation
 import Starscream
 
 //MARK: - Protocol
-
-// Delegate
-protocol ResponseDelegate: class {
-    func didReceiveResponse(object: SocketResponseObject)
-}
 // Interface
 protocol SocketManager {
-    var responseDelegate: ResponseDelegate? { get set }
+    var responseDelegate: SocketManagerDelegate? { get set }
     init()
     func on()
     func of()
     func send(message: String)
+}
+// Delegate
+protocol SocketManagerDelegate: class {
+    func didReceiveResponse(object: SocketResponseObject)
 }
 
 //MARK: - Base Class
@@ -30,7 +29,7 @@ class Socket {
     let server = WebSocketServer()
     let urlString = NetworkProperties().urlString
     
-    public weak var responseDelegate: ResponseDelegate?
+    public weak var responseDelegate: SocketManagerDelegate?
     
     private var decoder: JSONDecoder {
         let decoder = JSONDecoder()

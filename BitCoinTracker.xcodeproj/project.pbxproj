@@ -21,6 +21,7 @@
 		E9F9818B25C9A11C002468C5 /* NetworkProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F9818A25C9A11C002468C5 /* NetworkProperties.swift */; };
 		E9F9819025C9A16E002468C5 /* SocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F9818F25C9A16E002468C5 /* SocketManager.swift */; };
 		E9F9819425C9A242002468C5 /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = E9F9819325C9A242002468C5 /* Starscream */; };
+		E9F9819725C9A7AB002468C5 /* TrackerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F9819625C9A7AB002468C5 /* TrackerManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		E9F9818225C99FD2002468C5 /* SubscribedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribedObject.swift; sourceTree = "<group>"; };
 		E9F9818A25C9A11C002468C5 /* NetworkProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProperties.swift; sourceTree = "<group>"; };
 		E9F9818F25C9A16E002468C5 /* SocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketManager.swift; sourceTree = "<group>"; };
+		E9F9819625C9A7AB002468C5 /* TrackerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 		E9F9815C25C99B28002468C5 /* BitCoinTracker */ = {
 			isa = PBXGroup;
 			children = (
+				E9F9819925C9AADA002468C5 /* BusinesLayer */,
 				E9F9818D25C9A12F002468C5 /* Network */,
 				E9F9818025C99F89002468C5 /* Model */,
 				E9F9815D25C99B28002468C5 /* AppDelegate.swift */,
@@ -106,6 +109,14 @@
 				E9F9818F25C9A16E002468C5 /* SocketManager.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		E9F9819925C9AADA002468C5 /* BusinesLayer */ = {
+			isa = PBXGroup;
+			children = (
+				E9F9819625C9A7AB002468C5 /* TrackerManager.swift */,
+			);
+			path = BusinesLayer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,6 +200,7 @@
 				E9F9818B25C9A11C002468C5 /* NetworkProperties.swift in Sources */,
 				E9F9816225C99B28002468C5 /* ViewController.swift in Sources */,
 				E9F9815E25C99B28002468C5 /* AppDelegate.swift in Sources */,
+				E9F9819725C9A7AB002468C5 /* TrackerManager.swift in Sources */,
 				E9F9818325C99FD2002468C5 /* SubscribedObject.swift in Sources */,
 				E9F9816025C99B28002468C5 /* SceneDelegate.swift in Sources */,
 				E9F9817E25C99F08002468C5 /* SocketResponseObject.swift in Sources */,
