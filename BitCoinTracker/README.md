@@ -24,4 +24,7 @@
 3) чтобы перестать получать курс, шлём:
 `{"unsubscribe":"trade.btc_валюта_обменник"}`
 
+## Dependencies:
+#### for simple use,please, add link on github to Swift Packages  
+ - [StarScream WebSocket Library](https://github.com/daltoniam/Starscream "add link on github to Swift Packages ")
 
