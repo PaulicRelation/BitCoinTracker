@@ -13,6 +13,7 @@
 		E9F9816525C99B28002468C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9F9816325C99B28002468C5 /* Main.storyboard */; };
 		E9F9816725C99B2A002468C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9F9816625C99B2A002468C5 /* Assets.xcassets */; };
 		E9F9816A25C99B2A002468C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9F9816825C99B2A002468C5 /* LaunchScreen.storyboard */; };
+		E9F9817425C99E07002468C5 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E9F9817325C99E07002468C5 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		E9F9816925C99B2A002468C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E9F9816B25C99B2A002468C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9F9817225C99C31002468C5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		E9F9817325C99E07002468C5 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				E9F9816825C99B2A002468C5 /* LaunchScreen.storyboard */,
 				E9F9816B25C99B2A002468C5 /* Info.plist */,
 				E9F9817225C99C31002468C5 /* README.md */,
+				E9F9817325C99E07002468C5 /* .gitignore */,
 			);
 			path = BitCoinTracker;
 			sourceTree = "<group>";
@@ -126,6 +129,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9F9817425C99E07002468C5 /* .gitignore in Resources */,
 				E9F9816A25C99B2A002468C5 /* LaunchScreen.storyboard in Resources */,
 				E9F9816725C99B2A002468C5 /* Assets.xcassets in Resources */,
 				E9F9816525C99B28002468C5 /* Main.storyboard in Resources */,
