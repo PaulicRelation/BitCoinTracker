@@ -24,6 +24,7 @@
 		E9F9816625C99B2A002468C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9F9816925C99B2A002468C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E9F9816B25C99B2A002468C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9F9817225C99C31002468C5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +64,7 @@
 				E9F9816625C99B2A002468C5 /* Assets.xcassets */,
 				E9F9816825C99B2A002468C5 /* LaunchScreen.storyboard */,
 				E9F9816B25C99B2A002468C5 /* Info.plist */,
+				E9F9817225C99C31002468C5 /* README.md */,
 			);
 			path = BitCoinTracker;
 			sourceTree = "<group>";
