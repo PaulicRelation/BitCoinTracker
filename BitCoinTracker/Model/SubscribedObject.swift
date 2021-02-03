@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct SubscribedObject {
+struct SubscribedObject : Equatable {
     let currency: Currency
     let exchanger: Exchanger
     let subscribe: String
     let unsubscribe: String
-    let lastPrice: Double?
+    var lastPrice: Double?
     let lastDirection: Direction?
    
     init(_ exchanger: Exchanger, _ currensy: Currency) {
@@ -26,6 +26,10 @@ struct SubscribedObject {
     
     enum Direction {
         case up, down
+    }
+    
+    static func ==(lhs: SubscribedObject, rhs: SubscribedObject) -> Bool {
+        return lhs.exchanger == rhs.exchanger && lhs.currency == rhs.currency
     }
     
 }
