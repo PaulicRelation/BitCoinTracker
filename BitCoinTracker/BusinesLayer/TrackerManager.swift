@@ -16,15 +16,19 @@ protocol TrackerManager {
     func untrack(_ exchanger: Exchanger, with currency: Currency)
 }
 protocol PriceDelegate: class {
-    func haveNewPrice(price: Double)
+    func haveNewPrice(price: Double, isGrow: Bool)
 }
 
 //MARK: - Implimentation
 final class Tracker: TrackerManager {
+    
     var network: SocketManager = Socket()
     weak var priceDelegate: PriceDelegate?
     
+    var price: Double
+    
     internal init(delegate: PriceDelegate? = nil) {
+        self.price = 0
         self.priceDelegate = delegate
         self.network.responseDelegate = self
     }
@@ -47,6 +51,11 @@ final class Tracker: TrackerManager {
 //MARK: - SocketMeneger Delegate Implimentation
 extension Tracker: SocketManagerDelegate {
     func didReceiveResponse(object: SocketResponseObject) {
-        priceDelegate?.haveNewPrice(price: object.price)
+        
+        guard object.price != self.price else { return }
+        
+        let isGrow: Bool = object.price > self.price
+        priceDelegate?.haveNewPrice(price: object.price, isGrow: isGrow)
+        self.price = object.price
     }
 }

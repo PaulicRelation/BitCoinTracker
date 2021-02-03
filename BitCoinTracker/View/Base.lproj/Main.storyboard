@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="BitCoinTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YqS-jN-Lf3">
+                                <rect key="frame" x="20" y="64" width="374" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BTC Tracker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKx-Pu-TaZ">
+                                        <rect key="frame" x="0.0" y="16.5" width="116.5" height="27"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vjP-6e-uKB">
+                                        <rect key="frame" x="325" y="14.5" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="trackerSwitchAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="0GI-hY-7bY"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="vjP-6e-uKB" firstAttribute="centerY" secondItem="YqS-jN-Lf3" secondAttribute="centerY" id="JG3-Tm-Cce"/>
+                                    <constraint firstItem="AKx-Pu-TaZ" firstAttribute="leading" secondItem="YqS-jN-Lf3" secondAttribute="leading" id="JK0-I8-yeS"/>
+                                    <constraint firstAttribute="height" constant="60" id="XMA-zn-qFt"/>
+                                    <constraint firstItem="AKx-Pu-TaZ" firstAttribute="centerY" secondItem="YqS-jN-Lf3" secondAttribute="centerY" id="hdH-Or-cEp"/>
+                                    <constraint firstItem="vjP-6e-uKB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="AKx-Pu-TaZ" secondAttribute="trailing" constant="5" id="wCE-bw-vTl"/>
+                                    <constraint firstAttribute="trailing" secondItem="vjP-6e-uKB" secondAttribute="trailing" id="z2Z-IA-B9F"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dNT-6l-HUI">
+                                <rect key="frame" x="147" y="642" width="120" height="120"/>
+                                <color key="backgroundColor" name="AccentColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="G6s-u6-YA1"/>
+                                    <constraint firstAttribute="width" secondItem="dNT-6l-HUI" secondAttribute="height" id="tR4-SL-Wqg"/>
+                                </constraints>
+                                <state key="normal" title="Set Tracker">
+                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="60"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="setTrackerAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SNX-Gh-Voy"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tkj-rc-Ryb">
+                                <rect key="frame" x="20" y="144" width="374" height="150"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exchanger" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="krw-zp-xhn">
+                                        <rect key="frame" x="8" y="8" width="358" height="36"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GvH-J8-Nm3">
+                                        <rect key="frame" x="8" y="106" width="358" height="36"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="krw-zp-xhn" firstAttribute="top" secondItem="Tkj-rc-Ryb" secondAttribute="top" constant="8" id="1fZ-Rd-wkx"/>
+                                    <constraint firstAttribute="trailing" secondItem="GvH-J8-Nm3" secondAttribute="trailing" constant="8" id="4qR-gm-Kb9"/>
+                                    <constraint firstItem="GvH-J8-Nm3" firstAttribute="leading" secondItem="Tkj-rc-Ryb" secondAttribute="leading" constant="8" id="6Nv-Y0-e0y"/>
+                                    <constraint firstItem="krw-zp-xhn" firstAttribute="leading" secondItem="Tkj-rc-Ryb" secondAttribute="leading" constant="8" id="BNY-Dn-udD"/>
+                                    <constraint firstAttribute="bottom" secondItem="GvH-J8-Nm3" secondAttribute="bottom" constant="8" id="Lsp-HF-Phc"/>
+                                    <constraint firstAttribute="trailing" secondItem="krw-zp-xhn" secondAttribute="trailing" constant="8" id="kZh-Ey-yHE"/>
+                                    <constraint firstAttribute="height" constant="150" id="pqr-5I-z0w"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="dNT-6l-HUI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="191-9Q-XJ8"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Tkj-rc-Ryb" secondAttribute="trailing" constant="20" id="DMu-Tz-OsE"/>
+                            <constraint firstItem="YqS-jN-Lf3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Om9-Rl-H3g"/>
+                            <constraint firstItem="Tkj-rc-Ryb" firstAttribute="top" secondItem="YqS-jN-Lf3" secondAttribute="bottom" constant="20" id="Sy2-5A-2Hu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YqS-jN-Lf3" secondAttribute="trailing" constant="20" id="Xm7-vO-dbY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dNT-6l-HUI" secondAttribute="bottom" constant="100" id="YlU-K2-w5K"/>
+                            <constraint firstItem="YqS-jN-Lf3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="jwp-1N-jIR"/>
+                            <constraint firstItem="Tkj-rc-Ryb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="xdo-Lj-bEN"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="appNameLabel" destination="AKx-Pu-TaZ" id="nSE-oO-VSJ"/>
+                        <outlet property="currencyLabel" destination="GvH-J8-Nm3" id="hDJ-NC-HTK"/>
+                        <outlet property="exchangerLabel" destination="krw-zp-xhn" id="YZb-zu-kJq"/>
+                        <outlet property="mainView" destination="Tkj-rc-Ryb" id="HJD-bP-3r3"/>
+                        <outlet property="setTrackerButton" destination="dNT-6l-HUI" id="Hgz-ap-QcC"/>
+                        <outlet property="traceSwitch" destination="vjP-6e-uKB" id="oKE-iy-ooJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-417.39130434782612" y="118.52678571428571"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -20,7 +20,7 @@ struct SubscribedObject : Equatable {
         self.exchanger = exchanger
         self.subscribe = "{\"subscribe\":\"trade.btc_\(currency)_\(exchanger)\"}"
         self.unsubscribe = "{\"unsubscribe\":\"trade.btc_\(currency)_\(exchanger)\"}"
-        self.lastPrice = nil
+        self.lastPrice = 0
         self.lastDirection = nil
     }
     
