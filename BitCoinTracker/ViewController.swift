@@ -16,8 +16,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var setTrackerButton: UIButton!
     @IBOutlet weak var traceSwitch: UISwitch!
     @IBOutlet weak var mainView: UIView!
-  
+    
     //MARK: - Custom views
+    var pickerShade = UIView()
     var toolBar = UIToolbar()
     var picker  = UIPickerView()
     var priceView = PriceAnimationView()
@@ -54,6 +55,7 @@ class ViewController: UIViewController {
 }
 
 // MARK: - EXTENSIONS
+
 //MARK:  - Price Delegate
 extension ViewController: PriceDelegate {
     func haveNewPrice(price: Double, isGrow: Bool) {
@@ -65,6 +67,8 @@ extension ViewController: PriceDelegate {
 private extension ViewController {
     
     func setupUI() {
+        picker.delegate = self
+        picker.dataSource = self
         mainView.isHidden = true
         traceSwitch.isHidden = true
         traceSwitch.onTintColor = .systemBlue
@@ -76,38 +80,31 @@ private extension ViewController {
     }
     
     func showPickerView() {
-        let hider = UIView()
-        hider.frame = view.frame
-        hider.backgroundColor = UIColor(white: 0.4, alpha: 1)
-        hider.alpha = 0
-        hider.isHidden = false
-        
-        UIView.animate(withDuration: 1) {
-            hider.alpha = 0.97
-        }
-        self.view.addSubview(hider)
-        picker = UIPickerView.init()
-        picker.backgroundColor = .white
-        picker.alpha = 1
-        picker.isOpaque = false
-        picker.delegate = self
-        picker.dataSource = self
-        picker.autoresizingMask = .flexibleWidth
-        picker.contentMode = .center
-        picker.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 200, width: UIScreen.main.bounds.size.width, height: 200)
-        
-        hider.addSubview(picker)
-        
-        toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 200, width: UIScreen.main.bounds.size.width, height: 50))
+        pickerShade.frame = view.frame
+        pickerShade.backgroundColor = UIColor(white: 0, alpha: 0)
+        picker.frame = CGRect.init(x: 0, y: UIScreen.main.bounds.size.height - 0, width: UIScreen.main.bounds.size.width, height: 200)
+        toolBar.frame = CGRect.init(x: 0, y: UIScreen.main.bounds.size.height - 0, width: UIScreen.main.bounds.size.width, height: 50)
         toolBar.barStyle = .default
-        toolBar.isTranslucent = true
-        toolBar.barTintColor = .systemGray
-        let buttons = [
-            UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.didTapCancel)),
-            UIBarButtonItem(title: "Select", style: .plain, target: self, action: #selector(self.didTapDone))
-        ]
+        toolBar.barTintColor = .systemBlue
+        
+        let color = traitCollection.userInterfaceStyle == .light ? 1 : 0
+        picker.backgroundColor = .init(white: CGFloat(color), alpha: 1)
+
+    
+        let buttons = [UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.didTapCancel)),
+                       UIBarButtonItem(title: "Select", style: .plain, target: self, action: #selector(self.didTapDone))]
         toolBar.items = buttons
-        hider.addSubview(toolBar)
+        toolBar.tintColor = .white
+        view.addSubview(pickerShade)
+        pickerShade.addSubview(picker)
+        pickerShade.addSubview(toolBar)
+        
+        UIView.animate(withDuration: 0.25) { [self] in
+            pickerShade.backgroundColor = UIColor(white: 0, alpha: 0.6)
+            self.picker.frame = CGRect.init(x: 0, y: UIScreen.main.bounds.size.height - 200, width: UIScreen.main.bounds.size.width, height: 200)
+            self.toolBar.frame = CGRect.init(x: 0, y: UIScreen.main.bounds.size.height - 200, width: UIScreen.main.bounds.size.width, height: 50)
+            pickerShade.isUserInteractionEnabled = true
+        }
     }
     
     func setTracker(_ exchanger: Exchanger, _ currency: Currency) {
@@ -121,6 +118,7 @@ private extension ViewController {
 }
 
 // MARK: - PickerView Datasource and Delegate
+
 extension ViewController: UIPickerViewDataSource  {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
@@ -132,6 +130,7 @@ extension ViewController: UIPickerViewDataSource  {
         return component == 0 ? Exchanger.allCases[row].rawValue : Currency.allCases[row].rawValue
     }
 }
+
 extension ViewController: UIPickerViewDelegate  {
     @objc func didTapDone() {
         let exchangerRow = picker.selectedRow(inComponent: 0)
@@ -141,9 +140,20 @@ extension ViewController: UIPickerViewDelegate  {
         let exchanger = Exchanger.allCases[exchangerRow]
         let currency = Currency.allCases[currencyRow]
         setTracker(exchanger, currency)
-        toolBar.superview!.removeFromSuperview()
+        mainView.alpha = 1
+        UIView.animate(withDuration: 0.25) {
+            self.pickerShade.backgroundColor = UIColor(white: 0.4, alpha: 0)
+            self.picker.frame = CGRect.init(x: 0, y: UIScreen.main.bounds.size.height - 0, width: UIScreen.main.bounds.size.width, height: 200)
+            self.toolBar.frame = CGRect.init(x: 0, y: UIScreen.main.bounds.size.height - 0, width: UIScreen.main.bounds.size.width, height: 30)
+            self.pickerShade.isUserInteractionEnabled = false
+        }
     }
     @objc func didTapCancel() {
-        toolBar.superview!.removeFromSuperview()
+        UIView.animate(withDuration: 0.25) {
+            self.pickerShade.backgroundColor = UIColor(white: 0.4, alpha: 0)
+            self.picker.frame = CGRect.init(x: 0, y: UIScreen.main.bounds.size.height - 0, width: UIScreen.main.bounds.size.width, height: 200)
+            self.toolBar.frame = CGRect.init(x: 0, y: UIScreen.main.bounds.size.height - 0, width: UIScreen.main.bounds.size.width, height: 30)
+            self.pickerShade.isUserInteractionEnabled = false
+        }
     }
 }

@@ -68,8 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				E929915C25CA316E00C01F7F /* DigitAnimation */,
-				E9F9816125C99B28002468C5 /* ViewController.swift */,
-				E9F9816325C99B28002468C5 /* Main.storyboard */,
+				E929916F25CB640A00C01F7F /* PriceAnimationView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -79,7 +78,6 @@
 			children = (
 				E929915D25CA318B00C01F7F /* SlidingNumberStrips.swift */,
 				E929916125CA31A300C01F7F /* SlidingNumberView.swift */,
-				E929916F25CB640A00C01F7F /* PriceAnimationView.swift */,
 			);
 			path = DigitAnimation;
 			sourceTree = "<group>";
@@ -124,13 +122,15 @@
 				E9F9818D25C9A12F002468C5 /* Network */,
 				E9F9818025C99F89002468C5 /* Model */,
 				E929915A25CA310B00C01F7F /* View */,
-				E9F9815D25C99B28002468C5 /* AppDelegate.swift */,
-				E9F9815F25C99B28002468C5 /* SceneDelegate.swift */,
-				E9F9816625C99B2A002468C5 /* Assets.xcassets */,
-				E9F9816825C99B2A002468C5 /* LaunchScreen.storyboard */,
-				E9F9816B25C99B2A002468C5 /* Info.plist */,
+				E9F9816125C99B28002468C5 /* ViewController.swift */,
+				E9F9816325C99B28002468C5 /* Main.storyboard */,
 				E9F9817225C99C31002468C5 /* README.md */,
 				E9F9817325C99E07002468C5 /* .gitignore */,
+				E9F9816B25C99B2A002468C5 /* Info.plist */,
+				E9F9816625C99B2A002468C5 /* Assets.xcassets */,
+				E9F9815D25C99B28002468C5 /* AppDelegate.swift */,
+				E9F9815F25C99B28002468C5 /* SceneDelegate.swift */,
+				E9F9816825C99B2A002468C5 /* LaunchScreen.storyboard */,
 			);
 			path = BitCoinTracker;
 			sourceTree = "<group>";
