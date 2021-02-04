@@ -9,21 +9,21 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    //MARK: - Interface Builder Properties
     @IBOutlet weak var appNameLabel: UILabel!
     @IBOutlet weak var exchangerLabel: UILabel!
     @IBOutlet weak var currencyLabel: UILabel!
     @IBOutlet weak var setTrackerButton: UIButton!
     @IBOutlet weak var traceSwitch: UISwitch!
     @IBOutlet weak var mainView: UIView!
-    
-    var intPartView: SlidingNumberView!
-    var fractPartView: SlidingNumberView!
-    var dot: UILabel!
-    
+  
+    //MARK: - Custom views
     var toolBar = UIToolbar()
     var picker  = UIPickerView()
+    var priceView = PriceAnimationView()
     var tracker: TrackerManager = Tracker()
     
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         tracker.priceDelegate = self
@@ -31,12 +31,11 @@ class ViewController: UIViewController {
         setupUI()
     }
     
+    //MARK: - Interface Builder Methods
     @IBAction func setTrackerAction(_ sender: UIButton) {
         showPickerView()
     }
-    
     @IBAction func trackerSwitchAction(_ sender: UISwitch) {
-        
         guard let x = exchangerLabel.text, let exchanger = Exchanger(rawValue: x),
               let y = currencyLabel.text, let currency = Currency(rawValue: y) else {
             traceSwitch.isOn = false
@@ -52,64 +51,41 @@ class ViewController: UIViewController {
             tracker.untrack(exchanger, with: currency)
         }
     }
-    
-    
-    
-    
 }
 
-// MARK: - Private behavior extention
-
+// MARK: - EXTENSIONS
+//MARK:  - Price Delegate
+extension ViewController: PriceDelegate {
+    func haveNewPrice(price: Double, isGrow: Bool) {
+        let color: UIColor = isGrow ? .green : .red
+        priceView.update(price, with: color)
+    }
+}
+//MARK: - Private section
 private extension ViewController {
     
     func setupUI() {
         mainView.isHidden = true
         traceSwitch.isHidden = true
         traceSwitch.onTintColor = .systemBlue
-        
-        intPartView = SlidingNumberView(startNumber: "00000", endNumber: "00000", font: UIFont.systemFont(ofSize: 38, weight: .heavy))
-        intPartView.animationDuration = 0.4
-        mainView.addSubview(intPartView)
-        intPartView.translatesAutoresizingMaskIntoConstraints = false
-        intPartView.trailingAnchor.constraint(equalTo: mainView.centerXAnchor, constant: -5).isActive = true
-        intPartView.centerYAnchor.constraint(equalTo: mainView.centerYAnchor).isActive = true
-        intPartView.heightAnchor.constraint(equalToConstant: 300).isActive = true
-  
-        dot = UILabel()
-        dot.text = "."
-        dot.font = UIFont.systemFont(ofSize: 38, weight: .heavy)
-        mainView.addSubview(dot)
-        dot.centerYAnchor.constraint(equalTo: mainView.centerYAnchor).isActive = true
-        dot.centerXAnchor.constraint(equalTo: mainView.centerXAnchor).isActive = true
-        dot.translatesAutoresizingMaskIntoConstraints = false
-        
-
-        fractPartView = SlidingNumberView(startNumber: "00000", endNumber: "00000", font: UIFont.systemFont(ofSize: 38, weight: .heavy))
-        fractPartView.animationDuration = 0.2
-        mainView.addSubview(fractPartView)
-        fractPartView.translatesAutoresizingMaskIntoConstraints = false
-        fractPartView.leadingAnchor.constraint(equalTo: mainView.centerXAnchor,  constant: 3).isActive = true
-        fractPartView.centerYAnchor.constraint(equalTo: mainView.centerYAnchor).isActive = true
-        fractPartView.heightAnchor.constraint(equalToConstant: 300).isActive = true
-        fractPartView.accelerationDirection = .rightToLeft
-        
-
+        mainView.addSubview(priceView)
+        priceView.trailingAnchor.constraint(equalTo: mainView.centerXAnchor).isActive = true
+        priceView.centerYAnchor.constraint(equalTo: mainView.centerYAnchor).isActive = true
+        priceView.translatesAutoresizingMaskIntoConstraints = false
         self.view.layoutIfNeeded()
     }
     
     func showPickerView() {
-        
         let hider = UIView()
         hider.frame = view.frame
         hider.backgroundColor = UIColor(white: 0.4, alpha: 1)
         hider.alpha = 0
         hider.isHidden = false
+        
         UIView.animate(withDuration: 1) {
             hider.alpha = 0.97
         }
         self.view.addSubview(hider)
-        
-        
         picker = UIPickerView.init()
         picker.backgroundColor = .white
         picker.alpha = 1
@@ -144,8 +120,7 @@ private extension ViewController {
     }
 }
 
-// MARK: - PickerView setup
-
+// MARK: - PickerView Datasource and Delegate
 extension ViewController: UIPickerViewDataSource  {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
@@ -157,7 +132,6 @@ extension ViewController: UIPickerViewDataSource  {
         return component == 0 ? Exchanger.allCases[row].rawValue : Currency.allCases[row].rawValue
     }
 }
-
 extension ViewController: UIPickerViewDelegate  {
     @objc func didTapDone() {
         let exchangerRow = picker.selectedRow(inComponent: 0)
@@ -169,52 +143,7 @@ extension ViewController: UIPickerViewDelegate  {
         setTracker(exchanger, currency)
         toolBar.superview!.removeFromSuperview()
     }
-    
     @objc func didTapCancel() {
         toolBar.superview!.removeFromSuperview()
     }
-    
-}
-
-//MARK:  -  Price Delegate
-extension ViewController: PriceDelegate {
-    func haveNewPrice(price: Double, isGrow: Bool) {
-        let color: UIColor = isGrow ? .green : .red
-        update(price, with: color)
-        
-    }
-    
-    private func update(_ price: Double, with color: UIColor) {
-        func components(of double: Double)->(String, String) {
-            let string = String(format: "%.5f", price)
-            let subString = string.split(separator: ".")
-            return (String(subString[0]), String(subString[1]))
-        }
-        
-        let (int, fract) = components(of: price)
-        
-        intPartView.startCounting(completion: {[weak self] finish in
-            self?.intPartView.endNumber = int
-        })
-       
-        fractPartView.startCounting(completion: {[weak self] finish in
-            self?.fractPartView.endNumber = fract
-        })
-
-        UIView.transition(with: dot, duration: 0.3, options: .transitionCrossDissolve, animations: {
-            self.dot.textColor = color
-        },
-        completion: nil)
-       
-        UIView.transition(with: intPartView, duration: 0.3, options: .transitionCrossDissolve, animations: {
-            self.intPartView.textColor = color
-        },
-        completion: nil)
-        
-        UIView.transition(with: fractPartView, duration: 0.3, options: .transitionCrossDissolve, animations: {
-            self.fractPartView.textColor = color
-        },
-        completion: nil)
-    }
-    
 }

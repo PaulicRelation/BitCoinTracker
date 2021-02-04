@@ -312,3 +312,12 @@ extension String {
         return size.width
     }
 }
+
+extension SlidingNumberView {
+    func change(_ color: UIColor, widthDuration duration: Double) {
+        UILabel.transition(with: self, duration: duration, options: .transitionCrossDissolve, animations: {
+            self.textColor = color
+        },
+        completion: nil)
+    }
+}

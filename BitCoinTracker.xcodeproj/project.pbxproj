@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		E929915E25CA318B00C01F7F /* SlidingNumberStrips.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929915D25CA318B00C01F7F /* SlidingNumberStrips.swift */; };
 		E929916225CA31A300C01F7F /* SlidingNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929916125CA31A300C01F7F /* SlidingNumberView.swift */; };
+		E929916B25CB5F8900C01F7F /* Extension + UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929916A25CB5F8900C01F7F /* Extension + UILabel.swift */; };
+		E929917025CB640A00C01F7F /* PriceAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929916F25CB640A00C01F7F /* PriceAnimationView.swift */; };
 		E9F9815E25C99B28002468C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F9815D25C99B28002468C5 /* AppDelegate.swift */; };
 		E9F9816025C99B28002468C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F9815F25C99B28002468C5 /* SceneDelegate.swift */; };
 		E9F9816225C99B28002468C5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F9816125C99B28002468C5 /* ViewController.swift */; };
@@ -29,6 +31,8 @@
 /* Begin PBXFileReference section */
 		E929915D25CA318B00C01F7F /* SlidingNumberStrips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidingNumberStrips.swift; sourceTree = "<group>"; };
 		E929916125CA31A300C01F7F /* SlidingNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidingNumberView.swift; sourceTree = "<group>"; };
+		E929916A25CB5F8900C01F7F /* Extension + UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UILabel.swift"; sourceTree = "<group>"; };
+		E929916F25CB640A00C01F7F /* PriceAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceAnimationView.swift; sourceTree = "<group>"; };
 		E9F9815A25C99B28002468C5 /* BitCoinTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitCoinTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9F9815D25C99B28002468C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9F9815F25C99B28002468C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,8 +79,25 @@
 			children = (
 				E929915D25CA318B00C01F7F /* SlidingNumberStrips.swift */,
 				E929916125CA31A300C01F7F /* SlidingNumberView.swift */,
+				E929916F25CB640A00C01F7F /* PriceAnimationView.swift */,
 			);
 			path = DigitAnimation;
+			sourceTree = "<group>";
+		};
+		E929916825CB5F5400C01F7F /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				E929916925CB5F6500C01F7F /* Extension */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		E929916925CB5F6500C01F7F /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E929916A25CB5F8900C01F7F /* Extension + UILabel.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		E9F9815125C99B28002468C5 = {
@@ -98,6 +119,7 @@
 		E9F9815C25C99B28002468C5 /* BitCoinTracker */ = {
 			isa = PBXGroup;
 			children = (
+				E929916825CB5F5400C01F7F /* Library */,
 				E9F9819925C9AADA002468C5 /* BusinesLayer */,
 				E9F9818D25C9A12F002468C5 /* Network */,
 				E9F9818025C99F89002468C5 /* Model */,
@@ -219,9 +241,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9F9817825C99E99002468C5 /* Currency.swift in Sources */,
+				E929916B25CB5F8900C01F7F /* Extension + UILabel.swift in Sources */,
 				E9F9818B25C9A11C002468C5 /* NetworkProperties.swift in Sources */,
 				E9F9816225C99B28002468C5 /* ViewController.swift in Sources */,
 				E929915E25CA318B00C01F7F /* SlidingNumberStrips.swift in Sources */,
+				E929917025CB640A00C01F7F /* PriceAnimationView.swift in Sources */,
 				E929916225CA31A300C01F7F /* SlidingNumberView.swift in Sources */,
 				E9F9815E25C99B28002468C5 /* AppDelegate.swift in Sources */,
 				E9F9819725C9A7AB002468C5 /* TrackerManager.swift in Sources */,
